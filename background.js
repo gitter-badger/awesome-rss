@@ -31,6 +31,10 @@ function removeHandler(tabId) {
 	delete TABS[tabId];
 }
 
+if (typeof browser === 'undefined') {
+	browser = chrome;
+}
+
 browser.runtime.onMessage.addListener(messageHandler);
 browser.tabs.onUpdated.addListener(scanPage);
 browser.tabs.onRemoved.addListener(removeHandler);

@@ -16,6 +16,10 @@ function pingExt() {
 	document.removeEventListener('DOMContentLoaded', pingExt);
 }
 
+if (typeof browser === 'undefined') {
+	browser = chrome;
+}
+
 browser.runtime.onMessage.addListener(messageHandler);
 
 if (document.readyState === 'complete') {
